@@ -32,7 +32,7 @@ BountyHub to apliacja webowa inspirowana Dzikim Zachodem. Umożliwia wystawianie
 
 ## Instalacja i uruchomienie
 ### 1. Klonowanie repozytorium
-
+```git clone https://github.com/Frames-Pear-Second/J208```
 ### 2. Instalacja zaleznosci
 ```npm install```
 ### 3. Uruchomienie Docker'a
