@@ -1,0 +1,60 @@
+<%- include("../../partials/header") %>
+<main>
+    <fieldset>
+        <legend><h2>Post new Wanted Poster</h2></legend>
+        <form action="/bounties/add" method="post">
+            <h3>Name</h3>
+            <label>
+                First name:
+                <input type="text" name="firstName">
+            </label>
+            <br>
+            <label>
+                Nickname:
+                <input type="text" name="nickname">
+            </label>
+            <br>
+            <label>
+                Last name:
+                <input type="text" name="lastName">
+            </label>
+            <br>
+            <h3>Traits</h3>
+            <label>
+                Kind
+                <select name="gender">
+                    <option value="0">Cowboy</option>
+                    <option value="1">Belle</option>
+                    <option value="2">Outsider</option>
+                </select>
+            </label>
+            <br>
+            <label>
+                Fate
+                <select name="state">
+                    <option value="0">Dead</option>
+                    <option value="1">Alive</option>
+                    <option value="2">Dead or Alive</option>
+                </select>
+            </label>
+            <br>
+            <h3>Reward</h3>
+            <input type="number" min="0" step="100" name="reward"><span>$</span>
+            <br>
+            <div>
+            <% if(errors){ %>
+            <ul>
+            <% errors.forEach(error => { %>
+                <li>
+                    <%= error %>
+                </li>
+            <% }) %>
+            </ul>
+            <% } %>
+        </div>
+            <br>
+            <input type="submit" value="Post bounty">
+        </form>
+    </fieldset>
+</main>
+<%- include("../../partials/footer") %>

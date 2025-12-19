@@ -1,0 +1,38 @@
+<%- include("../../partials/header") %>
+
+<main>
+    <h1><%= hunter.alias %></h1>
+    <div>
+        <% if(bounties.length === 0){ %>
+            <p>Empty</p>
+        <% }else{ %>
+            <ul>
+            <% bounties.forEach(bounty => { %>
+            <li>
+                <b><%= bounty.name.nick
+                        ? `${bounty.name.first} "${bounty.name.nick}" ${bounty.name.last}`
+                        : `${bounty.name.first} ${bounty.name.last}`
+                    %>
+                </b>
+                <i><%=
+                        bounty.state === 0 ? "Dead" :
+                        bounty.state === 1 ? "Alive" :
+                        "Dead or Alive"
+                    %>
+                </i>
+                <u>
+                    <%= `${Number(bounty.reward).toLocaleString("en-US")}$` %>
+                </u>
+                <form method="post" action="/hunter/claimReward">
+                    <input name="bountyId" value="<%= bounty._id %>" hidden>
+                    <input name="hunterId" value="<%= hunter._id %>" hidden>
+                    <input type="submit" value="Claim Bounty">
+                </form>
+            </li>
+        <% }) %>
+            </ul>
+        <% } %>
+    </div>
+</main>
+
+<%- include("../../partials/footer") %>

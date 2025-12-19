@@ -1,0 +1,30 @@
+<%- include("../../partials/header") %>
+
+<main>
+    <fieldset>
+        <legend><h2>Register</h2></legend>
+        <form action="/hunter/register" method="post">
+            <label>
+                Alias:
+                <input type="text" name="alias">
+            </label>
+            <br>
+            <label>
+                Password:
+                <input type="text" name="password">
+            </label>
+            <br>
+            <% if(errorMsg){ %>
+                <br>
+                <span class="errorMsgBox"><%= errorMsg %></span>
+                <br>
+            <% } %>
+            <br>
+            <a href="/hunter/login">Log in</a>
+            <br><br>
+            <input type="submit" value="Register">
+        </form>
+    </fieldset>
+</main>
+
+<%- include("../../partials/footer") %>

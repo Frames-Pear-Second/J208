@@ -1,0 +1,10 @@
+# Uruchomienie kontenera MongoDB za pomocą Docker
+# Nazwa kontenera: bountyhub-mongo
+# Port 27017 (MongoDB) mapowany na port lokalny 27017
+# Komenda uruchamiajaca Doker:
+
+docker run -d --name bountyhub-mongo -p 27017:27017 mongo:8.0
+
+# Adres do polaczenie z baza: 
+
+mongodb://localhost:27017

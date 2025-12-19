@@ -1,0 +1,20 @@
+<%- include("../../partials/header") %>
+
+<main>
+    <div>
+        <% if(leaderboard.length === 0){ %>
+            <p>Empty</p>
+        <% }else{ %>
+        <ol>
+        <% leaderboard.forEach(hunter => { %>
+            <li>
+                <b><%= hunter.alias %></b>
+                <u><%= `${Number(hunter.total).toLocaleString("en-US")}$` %></u>
+            </li>
+        <% }) %>
+        </ol>
+        <% } %>
+    </div>
+</main>
+
+<%- include("../../partials/footer") %>

@@ -1,0 +1,20 @@
+{
+  "name": "bountyhub",
+  "version": "0.2.1",
+  "author": "Frames-Pear-Second",
+  "description": "Bounty Hub is a Wild West inspired app, allowing user to post virtual bounties, and collect rewards as a bounty hunter",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "ejs": "^3.1.10",
+    "mongodb": "^7.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "license": "CC BY-NC 4.0"
+}
+

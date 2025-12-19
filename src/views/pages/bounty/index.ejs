@@ -1,0 +1,60 @@
+<%- include("../../partials/header") %>
+
+<main>
+    <div>
+        <form action="/bounties" method="get">
+            <label>
+                Kind:
+                <select name="gender">
+                    <option value="">All</option>
+                    <option value="0">Cowboy</option>
+                    <option value="1">Belle</option>
+                </select>
+            </label>
+
+            <label>
+                Fate:
+                <select name="state">
+                    <option value="">All</option>
+                    <option value="0">Dead</option>
+                    <option value="1">Alive</option>
+                </select>
+            </label>
+
+            <label>
+                Sort by:
+                <select name="sort">
+                    <option value="date">Date Added</option>
+                    <option value="reward">Reward</option>
+                </select>
+            </label>
+
+            <input type="submit" value="Sift">
+        </form>
+    </div>
+    <div>
+        <% if(bounties.length === 0){ %>
+            <p>Empty</p>
+        <% }else{ bounties.forEach(bounty => { %>
+            <p>
+                <h2><%= bounty.name.nick
+                        ? `${bounty.name.first} "${bounty.name.nick}" ${bounty.name.last}`
+                        : `${bounty.name.first} ${bounty.name.last}`
+                    %>
+                </h2>
+                <h3><%=
+                        bounty.state === 0 ? "Dead" :
+                        bounty.state === 1 ? "Alive" :
+                        "Dead or Alive"
+                    %>
+                </h3>
+                <h4>
+                    <%= `${Number(bounty.reward).toLocaleString("en-US")}$` %>
+                </h4>
+                <a href="/bounties/update/<%= bounty._id %>">Tweak traits</a>
+            </p>
+        <% })} %>
+    </div>
+</main>
+
+<%- include("../../partials/footer") %>

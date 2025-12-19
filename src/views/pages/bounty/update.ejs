@@ -1,0 +1,70 @@
+<%- include("../../partials/header") %>
+<main>
+    <fieldset>
+        <legend><h2>Update Wanted Poster</h2></legend>
+        <Button onclick="confirmDelete('<%= bounty._id %>')">Dump the Bounty</Button>
+        <script>
+            function confirmDelete(id){
+                const isConfirmed = confirm("You sure you want this bounty wiped?");
+                if(isConfirmed){
+                    window.location.href = `/bounties/delete/${id}`;
+                }
+            }
+        </script>
+        <form action="/bounties/update" method="post">
+            <input name="id" value="<%= bounty._id %>" hidden>
+            <h3>Name</h3>
+            <label>
+                First name:
+                <input type="text" name="firstName" value="<%= bounty.name.first %>">
+            </label>
+            <br>
+            <label>
+                Nickname:
+                <input type="text" name="nickname" value="<%= bounty.name.nick %>">
+            </label>
+            <br>
+            <label>
+                Last name:
+                <input type="text" name="lastName" value="<%= bounty.name.last %>">
+            </label>
+            <br>
+            <h3>Traits</h3>
+            <label>
+                Kind
+                <select name="gender">
+                    <option value="0" <%= bounty.gender == 0 ? "selected" : "" %>>Cowboy</option>
+                    <option value="1" <%= bounty.gender == 1 ? "selected" : "" %>>Belle</option>
+                    <option value="2" <%= bounty.gender == 2 ? "selected" : "" %>>Outsider</option>
+                </select>
+            </label>
+            <br>
+            <label>
+                Fate
+                <select name="state">
+                    <option value="0" <%= bounty.state == 0 ? "selected" : "" %>>Dead</option>
+                    <option value="1" <%= bounty.state == 1 ? "selected" : "" %>>Alive</option>
+                    <option value="2" <%= bounty.state == 2 ? "selected" : "" %>>Dead or Alive</option>
+                </select>
+            </label>
+            <br>
+            <h3>Reward</h3>
+            <input type="number" min="0" step="100" name="reward" value="<%= bounty.reward %>"><span>$</span>
+            <br>
+            <div>
+            <% if(errors){ %>
+            <ul>
+            <% errors.forEach(error => { %>
+                <li>
+                    <%= error %>
+                </li>
+            <% }) %>
+            </ul>
+            <% } %>
+        </div>
+            <br>
+            <input type="submit" value="Post the Bounty">
+        </form>
+    </fieldset>
+</main>
+<%- include("../../partials/footer") %>
